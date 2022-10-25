@@ -45,6 +45,7 @@ class ListFragment : Fragment() {
                 .replace(R.id.fragmentContainerView, CatsInfoFragment())
                 .addToBackStack(null)
                 .commit()
+
         }
     }
 
