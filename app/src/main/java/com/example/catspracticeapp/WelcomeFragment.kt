@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import com.example.catspracticeapp.databinding.FragmentWelcomeBinding
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 class WelcomeFragment : Fragment() {
 
@@ -26,14 +24,11 @@ class WelcomeFragment : Fragment() {
     ): View{
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonUnderstand.setOnClickListener{
-
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, ListFragment())
                 .addToBackStack(null)

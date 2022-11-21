@@ -23,7 +23,6 @@ class ListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -47,7 +46,6 @@ class ListFragment : Fragment() {
                 .commit()
         }
     }
-
     private fun setupListWithArrayAdapter() {
         val data = mutableListOf(
             Cat(UUID.randomUUID().toString(), "Maga"),
@@ -81,7 +79,6 @@ class ListFragment : Fragment() {
             .create()
         dialog.show()
     }
-
     private fun deleteCharecter(cat: Cat) {
         val listener = DialogInterface.OnClickListener { dialog, which ->
             if (which == DialogInterface.BUTTON_POSITIVE){
