@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListFragment">
-
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
@@ -18,8 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
-
-
     </ListView>
 
     <ImageView
@@ -31,7 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
-
     <ImageView
         android:id="@+id/imCatsInfo"
         android:layout_width="58dp"
