@@ -9,12 +9,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.catspracticeapp.adapter.RecyclerViewAdapter
 import com.example.catspracticeapp.databinding.AddCatsItemBinding
 import com.example.catspracticeapp.databinding.FragmentListBinding
 import com.example.catspracticeapp.db.CatEntity
 import com.example.catspracticeapp.view_model.CatListViewModel
+import com.example.retrofittestapp.retrofit.RetrofitBuilder
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class ListFragment : Fragment() {
@@ -31,7 +34,7 @@ class ListFragment : Fragment() {
         catListViewModel = ViewModelProvider(this).get(CatListViewModel::class.java)
 
         //RecyclerView
-        val recyclerViewAdapter = RecyclerViewAdapter()
+        val recyclerViewAdapter = RecyclerViewAdapter(requireContext())
         val recyclerView = binding.recyclerView
 
         recyclerView.adapter = recyclerViewAdapter
@@ -44,8 +47,6 @@ class ListFragment : Fragment() {
             deleteItem(it)
         }
         readList(recyclerViewAdapter)
-
-
         return binding.root
     }
 
@@ -57,7 +58,6 @@ class ListFragment : Fragment() {
                 .replace(R.id.fragmentContainerView, CatsInfoFragment())
                 .addToBackStack(null)
                 .commit()
-
         }
     }
     private fun readList(recyclerViewAdapter: RecyclerViewAdapter){
@@ -75,14 +75,12 @@ class ListFragment : Fragment() {
                 val name = dialogBinding.edCatName.text.toString()
                 val description = dialogBinding.edCatDescription.text.toString()
                 if (name.isNotBlank()){
-                    createCat(name,description)
+                    catListViewModel.createCat(name,description)
                 }
             }
             .create()
         dialog.show()
     }
-
-
     private fun deleteItem(catEntity: CatEntity) {
         val listener = DialogInterface.OnClickListener { dialog, which ->
             if (which == DialogInterface.BUTTON_POSITIVE){
@@ -97,20 +95,7 @@ class ListFragment : Fragment() {
             .create()
         dialog.show()
     }
-    private fun createCat(name : String, description: String){
-        val cat = CatEntity(
-            id = 0,
-            name = name,
-            description = description
-        )
-        try{
 
-            catListViewModel.addCat(cat)
-            Toast.makeText(requireContext(), "Added completed", Toast.LENGTH_SHORT).show()
-        }catch(e:Exception){
-            Toast.makeText(requireContext(), "Added completed", Toast.LENGTH_SHORT).show()
-        }
-    }
     companion object{
         const val KEY_TITLE = "title"
         const val KEY_DESCRIPTION = "description"

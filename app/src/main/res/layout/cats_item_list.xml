@@ -22,14 +22,12 @@
         android:id="@+id/tvIDCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="1"
         android:textColor="@android:color/darker_gray"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,10 +47,10 @@
         android:id="@+id/imageView"
         android:layout_width="74dp"
         android:layout_height="58dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="300dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvIDCat"
-        app:layout_constraintStart_toEndOf="@+id/tvIDCat"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvIDCat"
-        app:layout_constraintVertical_bias="0.483"
+        app:layout_constraintVertical_bias="0.548"
         app:srcCompat="@drawable/hd_cats" />
 </androidx.constraintlayout.widget.ConstraintLayout>

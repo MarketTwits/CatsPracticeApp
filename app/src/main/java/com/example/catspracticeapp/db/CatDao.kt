@@ -6,7 +6,6 @@ import androidx.room.*
 
 @Dao
 interface CatDao {
-
     @Query("SELECT * FROM cat_items")
     fun getCatList() : LiveData<List<CatEntity>>
 
